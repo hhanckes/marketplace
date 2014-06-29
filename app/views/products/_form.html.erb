@@ -1,0 +1,35 @@
+<%= nested_form_for [@store, @product], :html => { :class => 'form-horizontal' } do |f| %>
+	<%= render 'layouts/form_errors', object: @product %>
+	<%= f.hidden_field :store_id, :value => @store.id %>
+	<div class="control-group">
+	  <%= f.label :name, :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.text_field :name, :class => 'text_field' %>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <%= f.label :description, :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.text_area :description, :class => 'text_field' %>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <%= f.label :price, :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.text_field :price, :class => 'text_field' %>
+	  </div>
+	</div>
+	<h2>Categorías</h2>
+		<%= render 'product_categories', :f => f %>
+	<h2>Modelos</h2>
+	<p style="margin-top:-20px">Importante: <b>nunca elimines una talla/color</b></p>
+		<%= render 'product_stock_size_fields', :f => f %>
+	<h2>Imágenes</h2>
+		<%= render 'product_image_fields', :f => f %>	
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                store_products_path, :class => 'btn' %>
+  </div>
+<% end %>

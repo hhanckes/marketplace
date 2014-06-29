@@ -1,0 +1,33 @@
+<h1>Listing product_stock_sizes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Stock</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_stock_sizes.each do |product_stock_size| %>
+      <tr>
+        <td><%= product_stock_size.product_id %></td>
+        <td><%= product_stock_size.stock %></td>
+        <td><%= product_stock_size.size %></td>
+        <td><%= product_stock_size.color %></td>
+        <td><%= link_to 'Show', product_stock_size %></td>
+        <td><%= link_to 'Edit', edit_product_stock_size_path(product_stock_size) %></td>
+        <td><%= link_to 'Destroy', product_stock_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product stock size', new_product_stock_size_path %>

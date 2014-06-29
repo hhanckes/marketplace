@@ -1,0 +1,29 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+  		<%= link_to 'Logo', '#', class: 'brand' %>	 
+		<ul class="nav navbar-nav"> 
+			<li class="active"><%= link_to 'Tiendas', stores_path %></li>
+			<li class=""><%= link_to 'Productos', products_path %></li>
+		</ul>
+		<% if user_signed_in? %>
+		<ul class="nav navbar-nav navbar-right pull-right">
+        	<li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="true">Tu Cuenta <b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+				<li><%= link_to 'Administrar Tiendas', '#' %></li>
+				<li><%= link_to 'Cambiar clave', '#' %></li>
+				<li role="presentation" class="divider"></li>
+				<li><%= link_to 'Salir de '+current_user.email, destroy_user_session_path, method: :delete, :rel => 'nofollow' %></li>
+	          </ul>
+	        </li>
+      	</ul>
+	  	<% else %>
+			<ul class="nav navbar-nav navbar-right pull-right">
+				<li><%= link_to 'Entrar', new_session_path(resource_name) %></li>
+				<li><%= link_to 'Registrase', new_user_registration_path %></li>
+			</ul>
+	 	<% end %>
+    </div>
+  </div>
+</div>
