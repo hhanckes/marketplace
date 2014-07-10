@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    puts product_params
     respond_to do |format|
       if @product.save
         format.html { redirect_to [@store, @product], notice: 'Product was successfully created.' }
